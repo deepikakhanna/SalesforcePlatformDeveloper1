@@ -1,11 +1,6 @@
 //http://mytutorialrack.com/
 //Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
 
-//fetch the invoices created today, Note, you must have at least one invoice created today
-List<apex_invoice__c> invoiceList = [SELECT id, Name, APEX_Status__c, createdDate FROM APEX_Invoice__c WHERE createdDate = today];
-
-//create List to hold the updated invoice records
-List<apex_invoice__c> updatedInvoiceList = new List<apex_invoice__c>();
 APEX_Customer__c objCust = new APEX_Customer__C();
 objCust.Name = 'Test ABC';
 
@@ -20,4 +15,4 @@ objNewInvoice.APEX_Customer__c = objCust.id;
 
 //DML which is creating the new Invoice record which will be linked with newly created Customer record
 insert objNewInvoice;
-System.debug('New Invoice Id is '+objNewInvoice.id);
+System.debug('the customer we added '+objCust+' and the corresponding invoice for the customer:'+objNewInvoice);
