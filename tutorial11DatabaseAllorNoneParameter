@@ -1,0 +1,36 @@
+//Insert Operation Using Database methods
+//Insert Customer Records First using simple DML Statement. This Customer Record will be used when we will create Invoice Records
+APEX_Customer__c objCust = new APEX_Customer__C();
+objCust.Name = 'Test';
+insert objCust;//Inserting the Customer Records
+	
+//Insert Operation Using Database methods
+APEX_Invoice__c objNewInvoice = new APEX_Invoice__c();
+List<apex_invoice__c> InvoiceListToInsert = new List<apex_invoice__c>();
+objNewInvoice.APEX_Status__c = 'Pending';
+objNewInvoice.APEX_Customer__c = objCust.id;
+objNewInvoice.APEX_Amount_Paid__c = 1000;
+InvoiceListToInsert.add(objNewInvoice);
+
+//We will add a new Invoice record 
+APEX_Invoice__c objNewInvoice2 = new APEX_Invoice__c();
+objNewInvoice2.APEX_Status__c = 'Pending';
+objNewInvoice2.APEX_Amount_Paid__c = 1000;
+InvoiceListToInsert.add(objNewInvoice2);
+Database.SaveResult[] srList = Database.insert(InvoiceListToInsert, true);//Database method to insert the records in List
+	
+// Iterate through each returned result by the method
+for (Database.SaveResult sr : srList) {
+	if (sr.isSuccess()) {
+    // This condition will be executed for successful records and will fetch the ids of successful records
+	System.debug('Successfully inserted Invoice. Invoice ID: ' + sr.getId());//Get the invoice id of inserted Account
+	}
+else {
+    // This condition will be executed for failed records
+	for(Database.Error objErr : sr.getErrors()) {
+		System.debug('The following error has occurred.');  //Printing error message in Debug log
+		System.debug(objErr.getStatusCode() + ': ' + objErr.getMessage());
+		System.debug('Invoice oject field which are affected by the error: ' + objErr.getFields());
+	}
+}
+}
