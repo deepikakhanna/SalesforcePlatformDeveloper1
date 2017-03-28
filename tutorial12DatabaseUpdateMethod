@@ -1,0 +1,27 @@
+//Code to update the records using the Database methods
+List<apex_invoice__c> invoiceList = [SELECT id, Name, APEX_Status__c, createdDate FROM APEX_Invoice__c WHERE createdDate = today];//fetch the invoice created today
+List<apex_invoice__c> updatedInvoiceList = new List<apex_invoice__c>();
+for (APEX_Invoice__c objInvoice: invoiceList) {
+	if (objInvoice.APEX_Status__c == 'Pending') {
+		objInvoice.APEX_Status__c = 'Paid';
+		updatedInvoiceList.add(objInvoice);//Adding records to the list
+	}
+	
+}
+Database.SaveResult[] srList = Database.update(updatedInvoiceList, false);//Database method to update the records in List
+
+// Iterate through each returned result by the method
+for (Database.SaveResult sr : srList) {
+if (sr.isSuccess()) {
+    // This condition will be executed for successful records and will fetch the ids of successful records
+    System.debug('Successfully updated Invoice. Invoice ID is : ' + sr.getId());
+}
+else {
+    // This condition will be executed for failed records
+	for(Database.Error objErr : sr.getErrors()) {
+		System.debug('The following error has occurred.');//Printing error message in Debug log
+		System.debug(objErr.getStatusCode() + ': ' + objErr.getMessage());
+		System.debug('Invoice oject field which are affected by the error: ' + objErr.getFields());
+	}
+}
+}
