@@ -1,3 +1,5 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
 //Code to update the records using the Database methods
 List<apex_invoice__c> invoiceList = [SELECT id, Name, APEX_Status__c, createdDate FROM APEX_Invoice__c WHERE createdDate = today];//fetch the invoice created today
 List<apex_invoice__c> updatedInvoiceList = new List<apex_invoice__c>();
