@@ -1,0 +1,8 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+//Fetching Child Records using SOQL
+List<apex_customer__c> ListCustomers = [SELECT Name, Id, (SELECT id, Name FROM Invoices__r) FROM APEX_Customer__c WHERE Name = 'ABC Customer'];//Query for fetching the Child records along with Parent
+System.debug('ListCustomers '+ListCustomers);//Parent Record
+
+List<apex_invoice__c> ListOfInvoices = ListCustomers[0].Invoices__r;//By this notation, you could fetch the child records and save it in List
+System.debug('The invoice records related to the ABC customer '+ListOfInvoices);//Child records
