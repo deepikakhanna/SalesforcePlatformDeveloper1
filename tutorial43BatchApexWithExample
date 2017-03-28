@@ -9,17 +9,17 @@ global class CustomerProessingBatch implements Database.Batchable<sobject>{
 
   //Execute method
   global void execute (Database.BatchableContext BC, List<sobject> scope) {
-    List<apex_customer__c> customerList = new List<apex_customer__c>();
-    List<apex_customer__c> updtaedCustomerList = new List<apex_customer__c>();//List to hold updated customer
+    List<apex_customer__c> updatedCustomerList = new List<apex_customer__c>();//List to hold updated customer
     for (sObject objScope: scope) { 
         APEX_Customer__c newObjScope = (APEX_Customer__c)objScope ;//type casting from generic sOject to APEX_Customer__c
         newObjScope.APEX_Customer_Description__c = 'Updated Via Batch Job';
         newObjScope.APEX_Customer_Status__c = 'Paid';
-        updtaedCustomerList.add(newObjScope);//Add records to the List
-        System.debug('Value of UpdatedCustomerList '+updtaedCustomerList);
+        updatedCustomerList.add(newObjScope);//Add records to the List
+        System.debug('Records updated '+updatedCustomerList);
     } 
-        if (updtaedCustomerList != null && updtaedCustomerList.size()>0) {//Check if List is empty or not
-            Database.update(updtaedCustomerList); System.debug('List Size '+updtaedCustomerList.size());//Update the Records
+        if (updatedCustomerList != null && updatedCustomerList.size()>0) {//Check if List is empty or not
+            Database.update(updatedCustomerList); 
+            System.debug('Records are successfully updated '+updatedCustomerList);//Update the Records
         }
   }
 
@@ -29,7 +29,7 @@ global class CustomerProessingBatch implements Database.Batchable<sobject>{
 
   //Below code will fetch the job Id
   AsyncApexJob a = [Select a.TotalJobItems, a.Status, a.NumberOfErrors, a.JobType, a.JobItemsProcessed, a.ExtendedStatus, a.CreatedById, a.CompletedDate From AsyncApexJob a WHERE id = :BC.getJobId()];//get the job Id
-  System.debug('$$$ Jobid is'+BC.getJobId());
+  System.debug('Jobid is'+BC.getJobId());
 
   //below code will send an email to User about the status
   mail.setToAddresses(email);
