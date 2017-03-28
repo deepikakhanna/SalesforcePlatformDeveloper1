@@ -1,0 +1,12 @@
+
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+//fetching the Records via SOQL
+List<apex_invoice__c> invoiceList = new List<apex_invoice__c>();
+invoiceList = [SELECT Id, Name, APEX_Customer__r.Name, APEX_Status__c FROM APEX_Invoice__c WHERE createdDate = today AND 	APEX_Customer__r.Name != 'Test'];//SOQL query for given  criteria
+
+//Printing the fetched records
+System.debug('We have total '+invoiceList.size()+' Records in List');
+for (APEX_Invoice__c objInvoice: invoiceList) {	
+	System.debug('Record Value is '+objInvoice);//Printing the Record fetched
+}
