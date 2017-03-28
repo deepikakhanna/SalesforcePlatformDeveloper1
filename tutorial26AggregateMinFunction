@@ -1,0 +1,5 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+AggregateResult[] groupedResults = [SELECT MIN(APEX_Amount_Paid__c)minAmount FROM APEX_Invoice__c WHERE APEX_Customer__r.Name = 'ABC Customer'];
+Object minAmount = groupedResults[0].get('minAmount');
+System.debug('Minimum Amount Received From Customer ABC is '+minAmount);
