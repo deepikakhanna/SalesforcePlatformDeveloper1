@@ -1,0 +1,17 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+
+Trigger simpleTrigger on Account (after insert) {
+List<Contact> contactList=new List<Contact>();
+    for (Account a : Trigger.new) {
+    Contact c=new Contact();
+    c.firstName=a.Name;
+    c.lastName=a.Name;
+   
+    contactList.add(c);
+        // Iterate over each sObject
+    }
+
+  insert contactList;
+    
+}
