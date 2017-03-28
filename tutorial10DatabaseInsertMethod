@@ -17,7 +17,7 @@ InvoiceListToInsert.add(objNewInvoice);
 //We will add a new Invoice record 
 APEX_Invoice__c objNewInvoice2 = new APEX_Invoice__c();
 objNewInvoice2.APEX_Status__c = 'Pending';
-objNewInvoice2.APEX_Amount_Paid__c = 1000;
+objNewInvoice2.APEX_Amount_Paid__c = 700;
 InvoiceListToInsert.add(objNewInvoice2);
 Database.SaveResult[] srList = Database.insert(InvoiceListToInsert, false);//Database method to insert the records in List
 	
