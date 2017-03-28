@@ -4,10 +4,10 @@
 //Example for upserting the Customer records
 List<apex_customer__c> CustomerList = new List<apex_customer__c>();
 apex_customer__c cus = [SELECT Id, apex_external_id__c,APEX_Customer_Description__c FROM apex_customer__c WHERE apex_external_id__c = '1234'];
-cus.APEX_Customer_Description__c='hello';
+cus.APEX_Customer_Description__c='hello how are you?';
 
 customerlist.add(cus);
-for (Integer i=1; i< 10; i++) {
+for (Integer i=1; i< =10; i++) {
         apex_customer__c objcust=new apex_customer__c(name='Test' +i, apex_external_id__c='1234' +i);
         customerlist.add(objcust);
         } //Upserting the Customer Records
