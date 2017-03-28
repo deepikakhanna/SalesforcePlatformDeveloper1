@@ -1,0 +1,8 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+//Fetching Parent Record Field value using SOQL
+List<apex_invoice__c> ListOfInvoicesWithCustomerName = new List<apex_invoice__c>();
+ListOfInvoicesWithCustomerName = [SELECT Name, id, APEX_Customer__r.Name FROM APEX_Invoice__c LIMIT 10];    //Fetching the Parent record's values
+for (APEX_Invoice__c objInv: ListOfInvoicesWithCustomerName) {
+	System.debug('Invoice Customer Name is '+objInv.APEX_Customer__r.Name); //Will print the values, all the Customer Records will be printed
+}
