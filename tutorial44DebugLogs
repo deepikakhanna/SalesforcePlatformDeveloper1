@@ -1,0 +1,12 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+trigger CustomerTrigger on APEX_Customer__c (before update) {
+    List<apex_customer__c> customerList = new List<apex_customer__c>();
+    for (APEX_Customer__c objCust: Trigger.new) {
+        System.debug('objCust current value is'+objCust);
+        if (objCust.APEX_Active__c == true) {
+            objCust.APEX_Customer_Description__c = 'updated';
+            System.debug('The record which has satisfied the condition '+objCust);
+        }
+    }
+}
