@@ -1,18 +1,16 @@
 //http://mytutorialrack.com/
 //Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
 
-List<apex_invoice__c> invoiceList = [SELECT id, Name, APEX_Status__c, createdDate FROM APEX_Invoice__c];
-List<apex_invoice__c> updatedInvoiceList = new List<apex_invoice__c>();
-for(Apex_Invoice__c obj:invoiceList)
-{
-  if(obj.APEX_Status__c!='Paid')   
-  {
-	obj.APEX_Status__c='Paid';
-      updatedInvoiceList.add(obj);
-  }
-}
-//DML Statement to update the invoice status
-update updatedInvoiceList;
+//Example for upserting the Customer records
+List<apex_customer__c> CustomerList = new List<apex_customer__c>();
+apex_customer__c cus = [SELECT Id, apex_external_id__c,APEX_Customer_Description__c FROM apex_customer__c WHERE apex_external_id__c = '1234'];
+cus.APEX_Customer_Description__c='hello';
 
-//Prints the value of updated invoices
-System.debug('List has been updated and updated values of records are'+updatedInvoiceList);
+customerlist.add(cus);
+for (Integer i=1; i< 10; i++) {
+        apex_customer__c objcust=new apex_customer__c(name='Test' +i, apex_external_id__c='1234' +i);
+        customerlist.add(objcust);
+        } //Upserting the Customer Records
+
+upsert CustomerList;
+
