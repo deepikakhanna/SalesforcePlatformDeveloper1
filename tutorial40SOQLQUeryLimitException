@@ -1,0 +1,35 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+//Helper class:Below code needs o be checked.
+public class CustomerTriggerHelper {
+    
+    public static void isAfterUpdateCall(List<apex_customer__c> customerList, Map<id, apex_customer__c> oldMapCustomer) {
+        createInvoiceRecords(customerList,oldMapCustomer);//Method call
+        updateCustomerDescription(customerList);
+    }
+
+    //Method To Create Invoice Records
+    public static void createInvoiceRecords (List<apex_customer__c> customerList, Map<id, apex_customer__c> oldMapCustomer) {
+    List<apex_invoice__c> InvoiceList = new List<apex_invoice__c>();
+        for (APEX_Customer__c objCustomer: customerList) {
+            if (objCustomer.APEX_Customer_Status__c == 'Active' && oldMapCustomer.get(objCustomer.id).APEX_Customer_Status__c == 'Inactive') {//condition to check the old value and new value
+                APEX_Invoice__c objInvoice = new APEX_Invoice__c();
+                objInvoice.APEX_Status__c = 'Pending';
+                objInvoice.APEX_Customer__c = objCustomer.id;
+                InvoiceList.add(objInvoice);
+            }
+        }
+        insert InvoiceList;//DML to insert the Invoice List in SFDC
+    }
+
+    //Method to update the invoice records
+    public static void updateCustomerDescription (List<apex_customer__c> customerList) {
+        for (APEX_Customer__c objCust: customerList) {
+            List<apex_invoice__c> invList = [SELECT Id, Name, APEX_Description__c FROM APEX_Invoice__c WHERE APEX_Customer__c = :objCust.id];//This query will fire for the number of records customer list has and will hit the governor limit when records are more than 100 
+            for (APEX_Invoice__c objInv: invList) {
+                objInv.APEX_Description__c = 'OK To Pay';
+                update objInv;//Update invoice, this will also hit the governor limit for DML if large number(150) of records are there
+            }
+        }
+    } 
+}
