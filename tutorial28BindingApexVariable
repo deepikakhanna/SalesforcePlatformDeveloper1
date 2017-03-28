@@ -3,4 +3,6 @@
 //Apex Variable Reference
 String CustomerName = 'ABC Customer';
 List<apex_customer__c> listOfCustomer = [SELECT Id, Name,apex_customer_status__c FROM APEX_Customer__c WHERE Name = :CustomerName];//Query Using Apex variable
-System.debug('ListCustomer Name'+listOfCustomer);//Customer Name
+List<apex_invoice__c> invoiceList=[select id,apex_amount_paid__c from apex_invoice__c where apex_customer__r.name=:CustomerName];
+System.debug('customer records are'+listOfCustomer);//Customer Name
+System.debug('invoice records are '+invoiceList);//Customer Name
