@@ -1,0 +1,16 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+List<List<SObject>> customerAccountSearchList = new List<List<SObject>>();
+
+//SOSL query which will search for 'ABC' string in Invoice and in Account object's fields
+customerAccountSearchList = [FIND 'ABC*' IN ALL FIELDS RETURNING APEX_Customer__c (Id,APEX_Customer__c.Name,APEX_Customer__c.APEX_Customer_Description__c), Account(Id,Name)];
+
+//Returned result will be printed
+System.debug('Search Result '+customerAccountSearchList);
+
+//This list will hold the returned results for Invoice Object
+APEX_Customer__c [] searchedCustomer = ((List<APEX_Customer__c>)customerAccountSearchList[0]);
+
+//This list will hold the returned results for Account Object
+Account [] searchedAccount = ((List<Account>)customerAccountSearchList[1]);
+System.debug('Result of searched Customer'+searchedCustomer+'Value of searched Account'+searchedAccount);
