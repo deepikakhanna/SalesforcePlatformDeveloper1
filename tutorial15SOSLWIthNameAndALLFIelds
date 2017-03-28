@@ -2,6 +2,6 @@
 //Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
 List<list<SObject>> customerList=[FIND 'ABC*'
 IN NAME  Fields
-RETURNING APEX_customer__c(Id,APEX_Customer__c.Name)];
+RETURNING APEX_customer__c(Id,APEX_Customer__c.Name,APEX_Customer__c.Apex_Customer_Description__c)];
 
 System.debug('the result is '+customerList);
