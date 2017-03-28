@@ -1,0 +1,13 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+
+AggregateResult[] groupedResults = [SELECT MAX(APEX_Amount_Paid__c)maxAmount,MIN(APEX_Amount_Paid__c)minAmount,AVG(APEX_Amount_Paid__c)avgAmount
+FROM APEX_Invoice__c WHERE APEX_Customer__r.Name = 'ABC Customer'];
+System.debug(groupedResults);
+
+Object maxAmt = groupedResults[0].get('maxAmount');
+Object minAmt = groupedResults[0].get('minAmount');
+Object avgAmt = groupedResults[0].get('avgAmount');
+System.debug('Maximum invoice amount paid by the ABC customer '+maxAmt);
+System.debug('Minimum invoice amount paid by the ABC customer '+minAmt);
+System.debug('Average invoice amount paid by the ABC customer '+avgAmt);
