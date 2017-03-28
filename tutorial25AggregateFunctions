@@ -3,5 +3,6 @@
 
 //Getting Average of all the invoices for a Perticular Customer
 AggregateResult[] groupedResults = [SELECT AVG(APEX_Amount_Paid__c)averageAmount FROM APEX_Invoice__c WHERE APEX_Customer__r.Name = 'ABC Customer'];
+System.debug(groupedResults);
 Object avgPaidAmount = groupedResults[0].get('averageAmount');
 System.debug('Total Average Amount Received From Customer ABC is '+avgPaidAmount);
