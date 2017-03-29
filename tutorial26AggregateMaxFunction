@@ -1,6 +1,7 @@
 //http://mytutorialrack.com/
 //Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
 //Getting Average of all the invoices for a Perticular Customer
+
 AggregateResult[] groupedResults = [SELECT MAX(APEX_Amount_Paid__c)maxAmount FROM APEX_Invoice__c WHERE APEX_Customer__r.Name = 'ABC Customer'];
 Object maxAmount = groupedResults[0].get('maxAmount');
 System.debug('Maximum Amount Received From Customer ABC is '+maxAmount);
