@@ -1,5 +1,4 @@
-//http://mytutorialrack.com/
-//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+
 //Helper class:Below code needs o be checked.
 public class CustomerTriggerHelper {
     
