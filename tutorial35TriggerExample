@@ -1,5 +1,4 @@
-//http://mytutorialrack.com/
-//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+
 trigger myAccountTrigger2 on Account( before insert) {
     if (Trigger.isInsert) {
         for (Account a : Trigger.new) {
