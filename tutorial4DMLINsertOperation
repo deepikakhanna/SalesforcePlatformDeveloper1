@@ -1,5 +1,3 @@
-//http://mytutorialrack.com/
-//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
 
 APEX_Customer__c objCust = new APEX_Customer__C();
 objCust.Name = 'Test ABC';
