@@ -1,4 +1,4 @@
-//Heper class:Below code needs o be checked.
+
 public class CustomerTriggerHelper {
     
     public static void isAfterUpdateCall(List<apex_customer__c> customerList, Map<id, apex_customer__c> newMapCustomer, Map<id, apex_customer__c> oldMapCustomer) {
