@@ -1,5 +1,4 @@
-//http://mytutorialrack.com/
-//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+
 //Trigger with Context variable for controlling the calling flow
 trigger Customer_After_Insert on APEX_Customer__c (after update, after insert) {
     if (trigger.isAfter && trigger.isUpdate) {//This condition will check for trigger events using isAfter and isUpdate context variable
