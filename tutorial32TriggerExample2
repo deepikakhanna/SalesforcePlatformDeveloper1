@@ -1,5 +1,4 @@
-//http://mytutorialrack.com/
-//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+
 //Modified Trigger Code
 trigger CustomerAfterUpdateTrigger on APEX_Customer__c (after update) {
     List<apex_invoice__c> InvoiceList = new List<apex_invoice__c>();
