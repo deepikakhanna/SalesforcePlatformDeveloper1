@@ -1,3 +1,6 @@
+//http://mytutorialrack.com/
+//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+
 List<List<SObject>> customerAccountSearchList = new List<List<SObject>>();
 
 //SOSL query which will search for 'ABC' string in Invoice and in Account object's fields
