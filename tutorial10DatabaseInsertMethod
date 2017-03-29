@@ -1,4 +1,4 @@
-
+//https://mytutorialrack.com/
 //Insert Operation Using Database methods
 //Insert Customer Records First using simple DML Statement. This Customer Record will be used when we will create Invoice Records
 APEX_Customer__c objCust = new APEX_Customer__C();
