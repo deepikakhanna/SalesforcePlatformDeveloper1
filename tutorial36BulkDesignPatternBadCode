@@ -1,5 +1,4 @@
-//http://mytutorialrack.com/
-//Check the complete course here https://mytutorialrack.com/salesforce-platform-developer-1-certification-course/
+
 //Bad Trigger Code
 trigger CustomerStatusTrigger on APEX_Customer__c (after update) {
     for (APEX_Customer__c objCustomer: Trigger.new) {
