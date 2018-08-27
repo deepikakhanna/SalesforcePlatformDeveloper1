@@ -1,0 +1,7 @@
+List<Schema.SObjectType> gd = Schema.getGlobalDescribe().Values();
+for(Schema.SObjectType ob:gd)
+{
+  System.debug('Object Name is '+ob.getDescribe().getName());
+//Now if you want to display the fields associated with each of these objects, you can use
+  System.debug('Object Name is '+ob.getDescribe().getName()+' fields are '+ob.getDescribe().fields.getMap().Values());
+}
