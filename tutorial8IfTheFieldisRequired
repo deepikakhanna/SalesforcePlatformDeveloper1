@@ -1,0 +1,18 @@
+Map<String, Schema.SObjectType> m  = Schema.getGlobalDescribe() ;
+system.debug('==>m is==>'+m);
+Schema.SObjectType s = m.get('Account') ;
+system.debug('==>Sobject Type is ==>'+s);
+Schema.DescribeSObjectResult r = s.getDescribe() ;
+system.debug('==>DescribeSObjectResult==>'+r);
+Map<String,Schema.SObjectField> fields = r.fields.getMap() ;
+system.debug('==>fields==>'+fields);
+List<String> lstrequiredfields=new List<String>();
+for(String f : fields.keyset())
+{
+ Schema.DescribeFieldResult desribeResult = fields.get(f).getDescribe();
+ if( desribeResult.isCreateable()  && !desribeResult.isNillable() && !desribeResult.isDefaultedOnCreate())
+ {
+    //This is mandatory / required field
+      lstrequiredfields.add(f);
+ }
+}
