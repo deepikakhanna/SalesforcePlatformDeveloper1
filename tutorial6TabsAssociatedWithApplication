@@ -1,0 +1,18 @@
+// Get tab set describes for each app
+List<Schema.DescribeTabSetResult> tabSetDesc = Schema.describeTabs();
+//just run this to see what all things are available in this tabSetDesc
+System.debug('tabSetDesc  --'+tabSetDesc);
+// Iterate through each tab set describe for each app and display the info
+for(DescribeTabSetResult tsr : tabSetDesc) {
+    String appLabel = tsr.getLabel();
+    // Display tab info for the Sales app
+    if (appLabel == 'Service') {
+        List<Schema.DescribeTabResult> tabDesc = tsr.getTabs();
+        System.debug('-- Tab information for the Sales app --');
+        for(Schema.DescribeTabResult tr : tabDesc) {
+            System.debug('Label: ' + tr.getLabel() );
+          
+        }
+    }
+}
+
