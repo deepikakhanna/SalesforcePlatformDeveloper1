@@ -1,0 +1,8 @@
+<apex:page controller="RetrievePicklistData">
+<apex:form >
+     <apex:outputlabel value="Stage"/>
+     <apex:selectList size="1" >
+                  <apex:selectOptions value="{!pickNames}"></apex:selectOptions>
+    </apex:selectList>
+</apex:form>
+</apex:page>
