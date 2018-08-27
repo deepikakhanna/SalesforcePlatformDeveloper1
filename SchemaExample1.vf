@@ -1,0 +1,8 @@
+<apex:page controller="ObjectRetrieve">
+    <apex:form >
+        <apex:outputLabel value="All objects" />
+			<apex:selectList >
+        		<apex:selectOptions value="{!objnames}"> </apex:selectOptions>
+           </apex:selectList>
+    </apex:form>
+</apex:page>
