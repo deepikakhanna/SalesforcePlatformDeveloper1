@@ -1,0 +1,13 @@
+public class ObjectRetrieve {
+        public List<SelectOption> getObjnames()
+        {
+            List<Schema.SObjectType> globalDesc=Schema.getGlobalDescribe().Values();
+            List<SelectOption> options=new List<SelectOption>();
+            options.add(new SelectOption('None','None'));
+            for(Schema.SObjectType objType:globalDesc )
+            {
+               options.add(new SelectOption(objType.getDescribe().getName(),objType.getDescribe().getName()));
+            }
+               return options;
+        }
+}
