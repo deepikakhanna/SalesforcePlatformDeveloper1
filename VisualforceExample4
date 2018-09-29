@@ -1,0 +1,4 @@
+<!—remove the width and height attributes and see the difference 
+<apex:page >
+    <apex:iframe src="https://mytutorialrack.com/"  width="400" height="500"/>
+</apex:page>
