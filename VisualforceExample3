@@ -1,0 +1,14 @@
+<apex:page>
+ <apex:includeScript value="{!$Resource.JavaSExam}"/>
+    <apex:outputPanel layout="block">
+        <label for="checkbox">Click this box to change text font:</label>
+        <input id="checkbox" type="checkbox"
+            onclick="changeFont(this,'{!$Component.thePanel}');"/>
+    </apex:outputPanel>
+
+    <!-- This outputPanel is the target, and contains 
+         text that will be changed. -->
+    <apex:outputPanel id="thePanel" layout="block">
+        Change my font weight!
+    </apex:outputPanel>
+</apex:page>
