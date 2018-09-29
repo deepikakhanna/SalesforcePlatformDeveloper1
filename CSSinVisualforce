@@ -1,0 +1,12 @@
+<apex:page showHeader="false" >
+    <apex:stylesheet  value="{!$Resource.SampleSty}"/>
+    <h1>Welcome to MyTutorialRack </h1>
+    <p>
+        This website contains tutorials related to Salesforce 
+        adminstration, apex, Lightning and visualforce.We help you to become 
+        Salesforce developer. 
+    </p>
+    <apex:outputText styleClass="sales">
+    MyTutorialRack
+    </apex:outputText>
+</apex:page>
